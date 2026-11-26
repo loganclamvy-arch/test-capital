@@ -10,9 +10,9 @@
 <style>
 /* Bố cục: thanh trên màu xanh + cột mục lục trái + vùng đọc giữa; công cụ (rà soát, lịch, mức phạt) dùng chung vùng đọc */
 :root{
-  --head:#1F3D33; --head-ink:#F2F5F1; --gold:#B8862E; --gold-soft:#E8D7AE;
-  --paper:#F5F6F2; --surface:#FFFFFF; --ink:#1B2420; --muted:#5B6A62; --line:#DCE3DD; --tint:#E8EFEA;
-  --brand-ink:#1F3D33; --warn-bg:#FBF3DC; --warn:#7E6118; --bad:#A33A2E; --bad-bg:#F8E6E2; --good:#2E7A4E; --good-bg:#E3F2E8;
+  --head:#123329; --head-ink:#F3F1E8; --gold:#B7892F; --gold-soft:#EBDDB8;
+  --paper:#F6F4EE; --surface:#FFFFFF; --ink:#1A2520; --muted:#5D6B63; --line:#E3E1D8; --tint:#EAF1EC;
+  --brand-ink:#18493A; --warn-bg:#FBF3DC; --warn:#7E6118; --bad:#A33A2E; --bad-bg:#F8E6E2; --good:#2E7A4E; --good-bg:#E3F2E8;
   --f-display:"Lora",Georgia,"Times New Roman","Noto Serif KR","Noto Serif SC","Noto Serif JP",serif; --f-body:"Be Vietnam Pro","Segoe UI",Roboto,Arial,"Noto Sans KR","Malgun Gothic","Noto Sans SC","Microsoft YaHei","Noto Sans JP","Yu Gothic",sans-serif;
   color-scheme:light;
 }
@@ -609,6 +609,30 @@ ul.ck.ck2 li{padding-left:0}ul.ck.ck2 li::before{content:none}
 #cw .cwp{order:2}
 #cw .cwbody{max-height:calc(100vh - 330px)}
 @media(max-width:700px){#cw{top:auto;bottom:10px;right:10px}#cw .cwp{order:-1}}
+/* === Bảng màu tinh chỉnh + canh đều === */
+.top{background:linear-gradient(90deg,#0F2C23 0%,#163D31 55%,#1C4A3B 100%);box-shadow:0 1px 0 rgba(183,137,47,.45)}
+.tabs a:hover{color:var(--brand-ink)}
+.tabs a.on{color:var(--brand-ink);border-bottom-color:var(--gold)}
+.hm3b{background:radial-gradient(120% 140% at 100% 0%,#2C6450 0%,rgba(44,100,80,0) 55%),linear-gradient(125deg,#0F2C23 0%,#164034 50%,#1E5241 100%);box-shadow:0 18px 40px rgba(15,44,35,.22)}
+.hm3b .eyb{color:#E2C27A}
+.hm3b h1{color:#FFFDF6}
+.hm3b p{text-align:justify;text-justify:inter-word;max-width:700px;color:rgba(255,253,246,.86)}
+.hm3b .cta a.pri{background:linear-gradient(180deg,#D4AE5C,#B7892F);border-color:#B7892F;color:#10291F}
+.hbar{box-shadow:0 16px 36px rgba(15,44,35,.13)}
+.hbi .n,.hbar .n{background:#18493A;color:#F3E3B5}
+.hpbtn{background:#18493A}
+.h2{color:var(--gold)}
+.h2::after{background:linear-gradient(90deg,#D9C79A,rgba(217,199,154,0))}
+.qa a,.tcard{box-shadow:0 1px 2px rgba(20,40,30,.04);transition:border-color .15s,box-shadow .15s,transform .15s}
+.qa a:hover,.tcard:hover{border-color:#D2B670;box-shadow:0 8px 22px rgba(20,50,38,.10);transform:translateY(-1px)}
+.qa i{background:var(--tint);border:1px solid var(--line)}
+.qa a b,.tcard>b{color:var(--brand-ink)}
+.qa a span,.tcard>span{display:block;text-align:justify;text-justify:inter-word;color:var(--muted)}
+.tcard small{color:#9A6F1F;font-weight:700}
+.h3x{color:var(--brand-ink);padding-left:10px;border-left:3px solid #C9A24B;line-height:1.3}
+.cknote,.lead2{text-align:justify;text-justify:inter-word}
+.doc h1,.doc h2,.doc h3{color:var(--brand-ink)}
+.callout{border-left-color:#C9A24B}
 </style>
 </head>
 <body>
