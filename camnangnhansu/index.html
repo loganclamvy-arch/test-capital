@@ -758,6 +758,9 @@ body.bk-on .ttsb{bottom:calc(var(--vb,0px) + 80px)}
 .hd .brand b{font-size:19px;letter-spacing:1.5px;text-transform:uppercase}
 
 .faqcite{font-weight:700;color:var(--green);background:#EEF5F0;border-radius:4px;padding:0 4px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+/* căn đều thêm cho các khối chữ nhỏ */
+.hbi>span:last-child,.qa a span,.ups .w small,.xlc li,.xlc p,.kitc p,.lsband span,.lsband2 span,.stepc p,.flow li,.vcard p,.vcard span,.nqc li,.card p,.card li,.side p,.cta p,.bkhero .lead,.hxb p{text-align:justify!important;text-align-last:left;hyphens:auto}
+.hxb p{text-align-last:center!important}
 </style>
 <script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;const t=c.closest('table');c.dataset.l=(t.tHead&&t.tHead.rows[0].cells[i]?.textContent)||''}}).observe(document,{childList:true,subtree:true})</script>
 </head>
@@ -1824,7 +1827,7 @@ document.addEventListener('click',e=>{const t=e.target.closest('#tkx,#fsbtn');if
 const XLS=[
  {id:'XL-MASTER',g:'Hồ sơ và tiền lương',fn:'Ho so nhan su master.xlsx',t:'Hồ sơ nhân sự master',ic:'🗂️',
   d:'Một file quản lý toàn bộ: danh sách NLĐ với đủ thông tin cá nhân, ngày ký HĐLĐ lần đầu, gia hạn, người phụ thuộc; tính lương, theo dõi phép, theo dõi hợp đồng và in hợp đồng từ dữ liệu.',
-  f:['Danh sách NLĐ 48 cột: định danh, liên hệ, bộ phận, lương, BHXH, ngân hàng, trạng thái, thâm niên, cảnh báo tự động','Hợp đồng: thử việc, HĐLĐ xác định thời hạn, không xác định thời hạn, phụ lục, khoán việc; cảnh báo hết hạn, ký lần thứ ba, quá 36 tháng','Người phụ thuộc theo thời gian giảm trừ; Tính lương biểu thuế 05 bậc; Theo dõi phép, Nhật ký nghỉ','03 mẫu hợp đồng in từ dữ liệu: chọn số hợp đồng là tự điền, chữ ký luôn đi liền điều khoản']},
+  f:['Danh sách NLĐ 84 cột (80 trường, 10 nhóm): cá nhân, giấy tờ, GPLĐ, thẻ tạm trú, liên hệ khẩn cấp, trình độ, chứng chỉ, công việc, điều kiện lao động, lương, BHXH, thuế, ngân hàng, khám sức khỏe, hồ sơ giấy tờ','Các trang liên kết: phép còn lại, thực lĩnh, chi phí DN, hợp đồng hiện tại tự lấy về Danh sách; trang Hồ sơ cá nhân chọn mã là xem toàn bộ hồ sơ, lịch sử hợp đồng, người phụ thuộc, đơn nghỉ','Hợp đồng: thử việc, HĐLĐ xác định thời hạn, không xác định thời hạn, phụ lục, khoán việc; cảnh báo hết hạn, ký lần thứ ba, quá 36 tháng','Bảng phép năm đầy đủ T1–T12 theo điều kiện lao động 12/14/16 ngày, Nhật ký nghỉ, Báo cáo nghỉ phép; Tính lương biểu thuế 05 bậc, tự khấu trừ 20% với cá nhân không cư trú','03 mẫu hợp đồng in từ dữ liệu: chọn số hợp đồng là tự điền, chữ ký luôn đi liền điều khoản']},
  {id:'XL-LUONG',g:'Hồ sơ và tiền lương',fn:'Mau bang luong co cong thuc.xlsx',t:'Bảng lương tháng có công thức',ic:'💵',
   d:'Nhập lương cơ bản, phụ cấp, ngày công, giờ làm thêm, người phụ thuộc: bảng tự tính lương, BHXH, BHYT, BHTN, đoàn phí, thuế TNCN, thực lĩnh và chi phí doanh nghiệp.',
   f:['Thông số 2026–2027: lương tối thiểu vùng, mức tham chiếu 2.530.000 đồng, giảm trừ 15,5/6,2 triệu, biểu thuế 05 bậc','100 dòng nhân viên; trần đóng bảo hiểm; phần làm thêm giờ miễn thuế','Cảnh báo lương dưới tối thiểu vùng, làm thêm quá 40 giờ','Phiếu lương in gửi NLĐ']},
@@ -1848,7 +1851,7 @@ const XLS=[
   f:['MTCV mẫu: C&B, Trưởng phòng HCNS, Kế toán viên, Công nhân vận hành, Trưởng ca, Nhân viên kinh doanh','Nhiệm vụ, KPI, tỷ trọng (kiểm tra đủ 100%), quyền hạn, yêu cầu, điều kiện làm việc','Ma trận chức danh × năng lực tô màu theo cấp độ','Đánh giá khoảng cách: đề xuất đào tạo ưu tiên, kèm cặp']},
  {id:'XL-ACCESS',g:'Phần mềm',fn:'Phan mem Access quan ly nhan su.zip',t:'Phần mềm Access quản lý nhân sự',ic:'🗄️',ext:'zip',
   d:'Bộ cài tự tạo cơ sở dữ liệu Microsoft Access trên máy của doanh nghiệp: hồ sơ nhân viên, hợp đồng, người phụ thuộc, đơn nghỉ, chấm công, tính lương, cảnh báo hạn, in hợp đồng ra Word, xuất Excel.',
-  f:['Giải nén, nhấp đúp TaoPhanMem_QuanLyNhanSu.vbs; cần Access 2010 trở lên (bản đầy đủ)','Màn hình menu 16 chức năng; form hồ sơ có danh sách hợp đồng, người phụ thuộc','Tính lương tháng biểu thuế 05 bậc, giảm trừ theo người phụ thuộc trong kỳ','In HĐLĐ không xác định thời hạn, xác định thời hạn, hợp đồng khoán việc từ dữ liệu']}];
+  f:['Giải nén, nhấp đúp TaoPhanMem_QuanLyNhanSu.vbs; cần Access 2010 trở lên (bản đầy đủ)','Menu 20 chức năng; hồ sơ nhân viên 70 trường như file Excel master, kèm danh sách hợp đồng, người phụ thuộc','Theo dõi phép năm theo từng tháng T1–T12, báo cáo nghỉ theo tháng, danh sách cảnh báo hồ sơ (GPLĐ, hộ chiếu, thẻ tạm trú, chứng chỉ, khám sức khỏe, thiếu giấy tờ)','Tính lương tháng biểu thuế 05 bậc, giảm trừ theo người phụ thuộc trong kỳ','In HĐLĐ không xác định thời hạn, xác định thời hạn, hợp đồng khoán việc từ dữ liệu']}];
 const XMIME={xlsx:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',zip:'application/zip'};
 async function dlXls(id){const x=XLS.find(a=>a.id===id);if(!x)return;const ext=x.ext||'xlsx';try{toast('Đang tải '+x.t+'…');let b;const r=await fetch('files/'+id+'.json');if(r.ok){const j=await r.json(),bin=atob(j.b),u=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)u[i]=bin.charCodeAt(i);b=u}else{const r2=await fetch('files/'+id+'.'+ext);if(!r2.ok)throw 0;b=await r2.blob()}saveBlob(new Blob([b],{type:XMIME[ext]}),x.fn)}catch(e){toast('Không tải được file. Hãy mở trang qua máy chủ web rồi thử lại.')}}
 function xlsCards(ids){const L=ids?XLS.filter(x=>ids.includes(x.id)):XLS,G=[...new Set(L.map(x=>x.g))];
