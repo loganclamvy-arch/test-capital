@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sổ tay rà soát &amp; tuân thủ nhà máy FDI – Lê &amp; Nguyễn</title>
+<style>
+html,body{margin:0;height:100%;background:#F6F4EE;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#18493A}
+.w{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px}
+.s{width:34px;height:34px;border:3px solid #E3E1D8;border-top-color:#B7892F;border-radius:50%;animation:r .8s linear infinite}
+@keyframes r{to{transform:rotate(360deg)}}
+p{margin:0;font-size:15px}
+</style>
+</head>
+<body>
+<div class="w"><div class="s"></div><p>Đang mở sổ tay bản mới nhất…</p></div>
+<script>
+/* Trang mở đầu: luôn chuyển tới bản mới nhất (theo commit) để không bị bộ nhớ đệm giữ bản cũ */
+(function(){
+  var R='loganclamvy-arch/test-capital',F='https://raw.githack.com/'+R+'/main/index.html',done=false;
+  function go(u){if(done)return;done=true;location.replace(u+location.hash)}
+  var t=setTimeout(function(){go(F)},5000);
+  fetch('https://api.github.com/repos/'+R+'/commits/main',{headers:{Accept:'application/vnd.github.sha'},cache:'no-store'})
+    .then(function(r){return r.ok?r.text():Promise.reject(r.status)})
+    .then(function(s){s=String(s).trim();clearTimeout(t);go(/^[0-9a-f]{40}$/.test(s)?'https://raw.githack.com/'+R+'/'+s+'/index.html':F)})
+    .catch(function(){clearTimeout(t);go(F)});
+})();
+</script>
+</body>
+</html>
