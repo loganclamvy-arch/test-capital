@@ -730,7 +730,7 @@ body.bk-on .tkr,body.bk-on .fbs,body.bk-on .tkre{display:none!important}
 .bkrule{height:4px;width:64px;background:#C9A75B;border-radius:4px;margin:0 0 1em}
 .bkch{break-before:column}
 .bkcover{height:var(--ph);break-after:column;background:linear-gradient(160deg,#123A2C,#1E4D3B);color:#fff;border-radius:6px;padding:28px 26px;display:flex;flex-direction:column;gap:10px;font-family:system-ui,sans-serif}
-.bkcover small{font-size:12px;opacity:.8}.bkcover h1{color:#fff;font-size:2em;margin:0}.bkcover p{color:#E9DDBB;text-align:left;margin:0}.bkcover span{margin-top:auto;font-size:12px;opacity:.75}
+.bkcover small{font-size:12px;opacity:.8}.bkcover h1{color:#fff;font-size:2em;margin:0}.bkcover p{color:#F6EBCB;text-align:left;margin:0;font-size:1.08em;line-height:1.6}.bkcover span{margin-top:auto;font-size:12.5px;color:#E3EDE7;opacity:1}
 .bkcl{flex:1;position:relative;min-height:80px}
 .bkcl svg{position:absolute;left:4%;right:6%;bottom:22%;width:90%;height:60%}
 .bktoc{list-style:none;padding:0!important}.bktoc li{border-bottom:1px solid #EEE5CF;margin:0;padding:3px 0;font-size:.9em}.bktoc a{text-decoration:none}
@@ -745,7 +745,8 @@ body.bk-on .tkr,body.bk-on .fbs,body.bk-on .tkre{display:none!important}
 /* nghe đọc */
 .lsn{display:inline-flex;align-items:center;gap:6px;margin:0 0 14px;border:1px solid var(--line);background:var(--card);color:var(--green);border-radius:999px;padding:6px 14px;font:inherit;font-size:13.5px;font-weight:700;cursor:pointer}
 .lsn:hover{border-color:var(--gold)}
-.tts-hl{background:#FFF1C9!important;box-shadow:0 0 0 4px #FFF1C9;border-radius:4px;transition:background .2s}
+.tts-hl{background:#FFF1C9!important;color:#1B2B24!important;box-shadow:0 0 0 4px #FFF1C9;border-radius:4px;transition:background .2s}
+.bkcover .tts-hl,.bkhero .tts-hl,.hero .tts-hl,.hd .tts-hl{background:rgba(242,201,126,.18)!important;color:#fff!important;box-shadow:0 0 0 4px rgba(242,201,126,.18),inset 3px 0 0 #F2C97E}
 .ttsb{position:fixed;z-index:210;left:50%;transform:translateX(-50%);bottom:calc(var(--vb,0px) + 16px);display:flex;align-items:center;gap:8px;max-width:min(720px,94vw);background:#10291F;color:#fff;border:1px solid #D2B670;border-radius:999px;padding:7px 8px 7px 14px;box-shadow:0 12px 30px rgba(0,0,0,.3)}
 .ttsb[hidden]{display:none}
 body.has-tk .ttsb{bottom:calc(var(--vb,0px) + 54px)}
