@@ -765,12 +765,13 @@ body.schide #fidx a.scS{display:none}
 .nldoc .nlnote{background:#FFF7E6;border-left:3px solid #D9A93B;padding:6px 10px}
 .nldoc .sign{display:flex;justify-content:flex-end;margin-top:18px;text-align:center}
 .nldoc .sg b,.nldoc .sg small{display:block}.nldoc .sg{min-height:110px}
+.brand small{display:none!important}
 </style>
 </head>
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" type="button" data-t="menu">☰ Mục lục</button>
-  <a class="brand" href="#tong-quan"><small data-t="brand_small">ThS. LS Lê Văn Lên</small><b data-t="brand_title">Sổ tay tuân thủ doanh nghiệp FDI</b></a>
+  <a class="brand" href="#tong-quan"><b data-t="brand_title">Sổ tay tuân thủ doanh nghiệp FDI</b></a>
   <div class="search">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
     <input id="q" type="search" autocomplete="off" data-tp="search_ph" data-ta="search_lbl" placeholder="Tìm mục, điều luật, mã biểu mẫu…" aria-label="Tìm trong sổ tay">
@@ -2788,7 +2789,7 @@ function r10(h){
   return false}
 
 /* ---------- tự tải bản mới nhất khi trình duyệt còn giữ bản cũ ---------- */
-(function(){var B='20261127051718';if(B.indexOf('__')===0)return;try{if(!/githack\.com|github\.io/.test(location.host))return}catch(e){return}
+(function(){var B='20261127084805';if(B.indexOf('__')===0)return;try{if(!/githack\.com|github\.io/.test(location.host))return}catch(e){return}
   var u=location.href.split('#')[0].split('?')[0].replace(/[^/]*$/,'')+'version.txt?t='+Date.now();
   fetch(u,{cache:'no-store'}).then(function(r){return r.ok?r.text():''}).then(function(v){v=(v||'').trim();if(!v||v===B)return;var k='sotayfdi.vtry';try{if(sessionStorage.getItem(k)===v)return;sessionStorage.setItem(k,v)}catch(e){}
     location.replace(location.pathname+'?v='+encodeURIComponent(v)+location.hash)}).catch(function(){})})();
