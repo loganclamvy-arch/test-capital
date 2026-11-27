@@ -441,10 +441,10 @@ a.hbk:hover{background:var(--green-soft)}
 .tiles a:hover{border-color:#D2B670}
 .tiles b{display:block;font-family:var(--fd);font-size:30px;color:var(--green);font-variant-numeric:tabular-nums}
 .tiles span{font-size:13px;color:var(--muted)}
-.ask{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center;background:var(--head);color:#F3F1E8;border-radius:12px;padding:18px 20px;margin-top:34px}
-.ask b{font-family:var(--fd);font-size:19px;display:block;color:#fff}
-.ask span{font-size:14px;color:#D7E2DB}
-.ask a{background:linear-gradient(180deg,#D4AE5C,#B7892F);color:#10291F;font-weight:700;text-decoration:none;border-radius:8px;padding:10px 16px;white-space:nowrap}
+.lsband{display:grid;border:0;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center;background:var(--head);color:#F3F1E8;border-radius:12px;padding:18px 20px;margin-top:34px}
+.lsband b{font-family:var(--fd);font-size:19px;display:block;color:#fff}
+.lsband span{font-size:14px;color:#D7E2DB}
+.lsband a{background:linear-gradient(180deg,#D4AE5C,#B7892F);color:#10291F;font-weight:700;text-decoration:none;border-radius:8px;padding:10px 16px;white-space:nowrap}
 /* nút liên hệ nổi */
 .fbs{position:fixed;right:18px;bottom:22px;z-index:57;display:flex;flex-direction:column;gap:10px}
 .fb{width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;font-weight:800;font-size:13px;box-shadow:0 4px 14px rgba(0,0,0,.2);transition:transform .12s}
@@ -469,14 +469,47 @@ body.has-tk main{padding-bottom:90px}body.has-tk .toast{bottom:56px}
 footer{padding-bottom:20px}
 @media(max-width:1100px){.hd .brand small{display:none}.dnsw2 span{display:none}}
 @media(max-width:1000px){.hbar,.hbar.k{grid-template-columns:repeat(2,minmax(0,1fr));margin:-50px 12px 0}.hbi{border-left:0;border-top:1px solid var(--line)}.hbi:nth-child(-n+2){border-top:0}.hbnx,.hbgo{grid-column:1/-1;border-left:0;border-top:1px solid var(--line)}.hbar:not(.k) .hbi{grid-column:1/-1;border-top:1px solid var(--line)}.hbar:not(.k) .hbi:first-child{border-top:0}.qa{grid-template-columns:1fr 1fr}.two{grid-template-columns:minmax(0,1fr)}}
-@media(max-width:760px){.hd{gap:8px 10px;padding:8px 12px}.hsearch{order:9;flex-basis:100%;max-width:none}.hd .brand b{font-size:16px}.dnsw2 select{max-width:150px}.mem .mt,.fsb em{display:none}.hxb,.hxb.sm{padding:28px 20px 80px}.hxb h1{font-size:24px}.qa{grid-template-columns:minmax(0,1fr)}.ask{grid-template-columns:minmax(0,1fr)}.fbs{right:10px;gap:8px}.fb{width:44px;height:44px}.tkl{font-size:0;padding:0 10px}.tkl::first-letter{font-size:16px}.tkx{font-size:0;padding:0 12px}.tkx::first-letter{font-size:16px}main>.wrap{padding-right:clamp(16px,2.6vw,40px)}}
+@media(max-width:760px){.hd{gap:8px 10px;padding:8px 12px}.hsearch{order:9;flex-basis:100%;max-width:none}.hd .brand b{font-size:16px}.dnsw2 select{max-width:150px}.mem .mt,.fsb em{display:none}.hxb,.hxb.sm{padding:28px 20px 80px}.hxb h1{font-size:24px}.qa{grid-template-columns:minmax(0,1fr)}.lsband{grid-template-columns:minmax(0,1fr)}.fbs{right:10px;gap:8px}.fb{width:44px;height:44px}.tkl{font-size:0;padding:0 10px}.tkl::first-letter{font-size:16px}.tkx{font-size:0;padding:0 12px}.tkx::first-letter{font-size:16px}main>.wrap{padding-right:clamp(16px,2.6vw,40px)}}
 @media print{.hdr,.fbs,.tkr{display:none!important}}
 .side .ups a{grid-template-columns:62px minmax(0,1fr);padding:10px 12px}.side .ups .pill{grid-column:2;justify-self:start}
 .side .ups .w b{font-size:14px}
 @media(max-width:760px){.hdr{position:static}html{scroll-padding-top:10px}}
-@media(max-width:1280px){.fsb em{display:none}.fsb{padding:7px 10px}.hd .brand small{display:none}}
-@media(max-width:1180px){.dnsw2 span{display:none}.mem .mt{display:none}}
+@media(max-width:1280px){.hd .brand small{display:none}}
+@media(max-width:1100px){.fsb em{display:none}.fsb{padding:7px 10px}}
+@media(max-width:1180px){.dnsw2 span{display:none}.dnsw2 select{max-width:190px}.hsearch{min-width:160px}}
+@media(max-width:960px){.mem .mt{display:none}}
 .ttabs{scrollbar-width:none}.ttabs::-webkit-scrollbar{display:none}
+.lsband{background:#123329!important}.lsband b{color:#FFFDF6!important}.lsband span{color:#D7E2DB!important;opacity:1}
+.subtabs{display:flex;gap:6px;padding:8px 14px;background:var(--paper);border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none}
+.subtabs::-webkit-scrollbar{display:none}.subtabs[hidden]{display:none}
+.subtabs a{flex:none;padding:6px 13px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);text-decoration:none;font-size:13.5px;font-weight:600;white-space:nowrap}
+.subtabs a:hover{border-color:var(--gold)}.subtabs a.on{background:#18493A;border-color:#18493A;color:#FFFDF6}
+.ttabs a{padding:12px 16px;font-size:14.5px}
+button.mem{cursor:pointer;font-family:inherit}.mem.on{background:rgba(255,255,255,.1);color:#F3E3B5;border:1px solid rgba(226,194,122,.6);box-shadow:none}
+.hbgo button.btn{background:#18493A;border-color:#18493A;color:#fff}
+.memo{position:fixed;inset:0;z-index:90;background:rgba(10,25,19,.55);display:flex;align-items:flex-start;justify-content:center;overflow:auto;padding:4vh 14px}
+.memp{position:relative;background:var(--card);color:var(--ink);border-radius:14px;max-width:640px;width:100%;padding:26px 28px;box-shadow:0 24px 60px rgba(0,0,0,.3);border-top:4px solid var(--gold)}
+.memp h2{font-family:var(--fd);color:var(--green);font-size:23px;margin:0 0 6px}
+.memx{position:absolute;right:12px;top:10px;border:0;background:none;font-size:26px;line-height:1;color:var(--muted);cursor:pointer}
+.memi{color:var(--muted);margin:0 0 8px}.memn{margin:6px 0 10px;line-height:1.6}
+.memb{margin:6px 0 14px;padding-left:20px;font-size:14px;line-height:1.55}.memb li{margin:3px 0}
+.memg{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px}
+.memg label{display:flex;flex-direction:column;gap:4px;font-size:13.5px;font-weight:600}
+.memg input,.memg select{font:inherit;font-weight:400;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
+.memr{border:1px solid var(--line);border-radius:10px;margin:12px 0;padding:8px 12px;display:grid;grid-template-columns:1fr 1fr;gap:4px 12px;font-size:13.5px}
+.memr legend{font-weight:700;font-size:13px;padding:0 4px}.memr label{display:flex;gap:6px;align-items:center}
+.memc{display:flex;gap:8px;align-items:flex-start;font-size:13px;line-height:1.5}.memc input{margin-top:3px}
+.memnote{font-size:13px;color:var(--muted);margin:10px 0}.memerr{color:var(--warn);font-weight:700;font-size:13.5px;min-height:1em;margin:4px 0}
+.memact{display:flex;flex-wrap:wrap;gap:8px}.memact .zb{background:#0068ff;border-color:#0068ff;color:#fff}
+@media(max-width:600px){.memg,.memr{grid-template-columns:1fr}.memp{padding:22px 18px}}
+@media(max-width:760px){.ttabs a{padding:11px 12px;font-size:14px}}
+.xlg{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:14px}
+.xlc{background:var(--card);border:1px solid var(--line);border-top:4px solid #1D6F42;border-radius:12px;padding:18px 20px;display:flex;flex-direction:column}
+.xlh{display:flex;gap:12px;align-items:center}.xlh i{font-style:normal;font-size:26px;width:46px;height:46px;border-radius:10px;background:#E6F2EA;display:flex;align-items:center;justify-content:center}
+.xlh h3{margin:0;font-family:var(--fd);color:var(--green);font-size:19px}.xlh span{font-size:12.5px;color:#1D6F42;font-weight:700}
+.xlc p{margin:12px 0 6px;line-height:1.55}.xlc ul{margin:0 0 14px;padding-left:20px;font-size:14px;line-height:1.55;flex:1}
+.xlc .btn{align-self:flex-start;background:#1D6F42;border-color:#1D6F42;color:#fff}
+@media(max-width:800px){.xlg{grid-template-columns:1fr}}
 </style>
 <script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;const t=c.closest('table');c.dataset.l=(t.tHead&&t.tHead.rows[0].cells[i]?.textContent)||''}}).observe(document,{childList:true,subtree:true})</script>
 </head>
@@ -491,25 +524,18 @@ footer{padding-bottom:20px}
     <div id="results"></div>
   </div>
   <label class="dnsw2"><span>Doanh nghiệp</span><select id="dnsel" aria-label="Doanh nghiệp đang xem"></select></label>
-  <a class="mem" href="#ho-so" data-newdn="1">＋ <span class="mt">Thêm doanh nghiệp</span></a>
+  <button class="mem" id="membtn" type="button">★ <span class="mt">Đăng ký thành viên</span></button>
   <button class="fsb" id="fsbtn" type="button" title="Toàn màn hình"><span>⛶</span><em>Toàn màn hình</em></button>
 </header>
 <nav class="ttabs" aria-label="Chính">
-  <a href="#trang-chu" data-nav="home">Tổng quan</a>
-  <a href="#ho-so" data-nav="hoso">Doanh nghiệp của tôi</a>
-  <a href="#nghia-vu" data-nav="ob">Sổ nghĩa vụ</a>
-  <a href="#lich" data-nav="cal">Lịch tuân thủ<span class="badge" id="calbadge" hidden></span></a>
-  <a href="#viec" data-nav="viec">Hướng dẫn thủ tục</a>
-  <a href="#nghiep-vu" data-nav="nv">Nghiệp vụ</a>
-  <a href="#thu-vien" data-nav="lib">Biểu mẫu</a>
-  <a href="#cong-cu" data-nav="tools">Công cụ</a>
-  <a href="#kiem-tra" data-nav="chc">Tự kiểm tra</a>
-  <a href="#so-tay-nld" data-nav="stnld">Sổ tay NLĐ</a>
-  <a href="#chuyen-de" data-nav="art">Chuyên đề, tình huống</a>
-  <a href="#tra-cuu" data-nav="look">Mức phạt</a>
-  <a href="#tu-van" data-nav="contact">Hỏi luật sư</a>
-  <a href="#muc-luc" data-nav="toc">Đọc cẩm nang</a>
+  <a href="#trang-chu" data-g="home">Tổng quan</a>
+  <a href="#ho-so" data-g="dn">Doanh nghiệp của tôi<span class="badge" id="calbadge" hidden></span></a>
+  <a href="#viec" data-g="viec">Hướng dẫn thủ tục</a>
+  <a href="#thu-vien" data-g="lib">Biểu mẫu</a>
+  <a href="#cong-cu" data-g="tools">Công cụ, tra cứu</a>
+  <a href="#muc-luc" data-g="toc">Cẩm nang</a>
 </nav>
+<nav class="subtabs" id="subtabs" aria-label="Mục con" hidden></nav>
 </div>
 <main><div class="wrap" id="view"><p class="muted">Đang mở cẩm nang…</p></div></main>
 <footer><div class="wrap">
@@ -1286,7 +1312,7 @@ function obCsv(){const p=profile(),st=obStats(p),S=st.S,q=s=>'"'+String(s||'').r
   saveBlob(new Blob(['﻿'+rows.map(r=>r.map(q).join(';')).join('\n')],{type:'text/csv'}),'So nghia vu - '+(p.ten||'doanh nghiep').replace(/[\\/:*?"<>|]/g,'-')+'.csv')}
 
 /* ---- khung dùng chung ---- */
-function needDn(what){return `<section class="card empty"><h1 class="h1">Chọn hoặc thêm doanh nghiệp</h1><p class="lead">Để xem ${esc(what)}, hãy chọn một doanh nghiệp ở ô “Doanh nghiệp” trên thanh trên cùng hoặc thêm doanh nghiệp mới. Mỗi doanh nghiệp có hồ sơ, sổ nghĩa vụ, lịch, kết quả kiểm tra riêng.</p><div class="actions"><a class="btn" href="#ho-so" data-newdn="1">Thêm doanh nghiệp</a><button class="btn ghost" type="button" data-demo="1">Tạo doanh nghiệp mẫu để xem thử</button></div></section>`}
+function needDn(what){return `<section class="card empty"><h1 class="h1">Chọn hoặc thêm doanh nghiệp</h1><p class="lead">Để xem ${esc(what)}, hãy chọn một doanh nghiệp ở ô “Doanh nghiệp” trên thanh trên cùng hoặc thêm doanh nghiệp mới. Mỗi doanh nghiệp có hồ sơ, sổ nghĩa vụ, lịch, kết quả kiểm tra riêng.</p><div class="actions"><a class="btn" href="#ho-so" data-newdn="1">Thêm doanh nghiệp</a><button class="btn ghost" type="button" data-mem="1">Đăng ký thành viên miễn phí</button></div></section>`}
 function dnHead(p,title){const I=IM[p.ind]||{};const fl=FLAGS.filter(([k])=>p[k]).map(([k,l])=>`<span class="tag">${esc(l)}</span>`).join('');
   return `<section class="dnhead"><div><div class="kick">${esc(title)}</div><h1 class="h1">${esc(p.ten||'Doanh nghiệp chưa đặt tên')}</h1><div class="small muted">${esc(I.t||'Chưa chọn ngành')} · ${esc(p.ld||0)} NLĐ${p.nu?` (${esc(p.nu)} nữ)`:''} · Vùng ${esc(p.vung||'I')}${p.mst?' · MST '+esc(p.mst):''}</div><div class="cnt" style="margin-top:8px">${fl}</div></div><div class="actions noprint"><a class="btn sm ghost" href="#ho-so">Sửa hồ sơ</a></div></section>`}
 
@@ -1334,7 +1360,7 @@ function dashView(){const p=profile();if(!p)return welcome();const I=IM[p.ind]||
   </aside></div>`}
 function welcome(){const n=Object.keys(DNS.list).length;return `<section class="welcome"><div class="kick">Capital HR · Phần mềm tuân thủ lao động</div><h1>Quản lý tuân thủ lao động cho từng doanh nghiệp khách hàng</h1>
   <p class="lead">Khai hồ sơ doanh nghiệp một lần: phần mềm tự lập sổ nghĩa vụ theo ngành và quy mô, lịch hạn luật định, bộ câu hỏi kiểm tra, hướng dẫn thủ tục từng bước, nội quy mẫu theo loại hình và Sổ tay người lao động mang tên doanh nghiệp.</p>
-  <div class="actions"><a class="btn" href="#ho-so" data-newdn="1">Thêm doanh nghiệp</a><button class="btn ghost" type="button" data-demo="1">Tạo doanh nghiệp mẫu để xem thử</button>${n?'<a class="btn ghost" href="#doanh-nghiep">Danh sách doanh nghiệp</a>':''}</div>
+  <div class="actions"><a class="btn" href="#ho-so" data-newdn="1">Thêm doanh nghiệp</a><button class="btn ghost" type="button" data-mem="1">Đăng ký thành viên miễn phí</button>${n?'<a class="btn ghost" href="#doanh-nghiep">Danh sách doanh nghiệp</a>':''}</div>
   <div class="steps3"><div class="card"><b>1. Khai hồ sơ</b><span class="small muted">Ngành (9 loại hình), số lao động, đặc điểm: FDI, KCN, ca đêm, nghề độc hại, NLĐ nước ngoài…</span></div><div class="card"><b>2. Rà soát nghĩa vụ</b><span class="small muted">${OBL.length} nghĩa vụ được lọc theo hồ sơ; đánh dấu đã có, chưa có, ghi bằng chứng.</span></div><div class="card"><b>3. Làm thủ tục và báo cáo</b><span class="small muted">Thủ tục từng bước, mẫu tải ngay, hạn tự tính; xuất báo cáo tuân thủ cho khách hàng.</span></div></div></section>`}
 
 /* ---- danh sách doanh nghiệp ---- */
@@ -1417,12 +1443,20 @@ function reportDnView(){const p=profile();if(!p)return needDn('báo cáo tuân t
 function reportDl(){const p=profile(),css=[...document.querySelectorAll('style')].map(x=>x.outerHTML).join('');saveBlob(new Blob(['<!DOCTYPE html><html lang="vi"><head><meta charset="utf-8"><title>Bao cao tuan thu lao dong</title>'+css+'</head><body style="background:#fff;padding:20px">'+reportDnHtml()+'</body></html>'],{type:'text/html'}),'Bao cao tuan thu - '+p.ten.replace(/[\\/:*?"<>|]/g,'-')+'.html')}
 
 /* ---- định tuyến bổ sung ---- */
-function route3(h){const r={'trang-chu':()=>['home',dashView()],'doanh-nghiep':()=>['dn',dnListView()],'ho-so':()=>['hoso',hosoView()],'nghia-vu':()=>['ob',obView()],'so-tay-nld':()=>['stnld',sotayView()],'bao-cao-dn':()=>['rep',reportDnView()]}[h];return r?r():null}
+function route3(h){const r={'trang-chu':()=>['home',dashView()],'doanh-nghiep':()=>['dn',dnListView()],'ho-so':()=>['hoso',hosoView()],'nghia-vu':()=>['ob',obView()],'so-tay-nld':()=>['stnld',sotayView()],'bao-cao-dn':()=>['rep',reportDnView()],'mau-excel':()=>['xls',xlsView()]}[h];return r?r():null}
 function after3(nav){fillDnSel();if(nav==='hoso')wireHoso();if(nav!=='hoso')newMode=false}
 
 
 /* ==== Bố cục kiểu sổ tay FDI: hero, thẻ nhu cầu, nút liên hệ nổi, thanh chạy hạn ==== */
-const TABALT={hoso:['dn','rep'],nv:['nq'],lib:['forms','qd'],chc:['check','report'],art:['sit'],look:[]};
+/* 6 tab chính + hàng tab con */
+const TABG=[
+ ['home','Tổng quan','#trang-chu',[]],
+ ['dn','Doanh nghiệp của tôi','#ho-so',[['hoso','Hồ sơ doanh nghiệp','#ho-so'],['ob','Sổ nghĩa vụ','#nghia-vu'],['cal','Lịch tuân thủ','#lich'],['chc','Tự kiểm tra','#kiem-tra'],['rep','Báo cáo tuân thủ','#bao-cao-dn',['report']],['dn','Danh sách doanh nghiệp','#doanh-nghiep']]],
+ ['viec','Hướng dẫn thủ tục','#viec',[['viec','Thủ tục từng bước','#viec'],['nv','Nghiệp vụ nhân sự','#nghiep-vu']]],
+ ['lib','Biểu mẫu','#thu-vien',[['lib','Thư viện biểu mẫu','#thu-vien'],['xls','Mẫu Excel lương, ngân sách','#mau-excel'],['stnld','Sổ tay người lao động','#so-tay-nld'],['nq','Nội quy lao động mẫu','#noi-quy'],['forms','Mẫu tham khảo Tập 2','#bieu-mau']]],
+ ['tools','Công cụ, tra cứu','#cong-cu',[['tools','Công cụ tính','#cong-cu'],['look','Mức phạt','#tra-cuu'],['art','Chuyên đề','#chuyen-de'],['sit','Tình huống','#tinh-huong'],['contact','Hỏi luật sư','#tu-van']]],
+ ['toc','Cẩm nang','#muc-luc',[]]];
+function groupOf(nav){for(const g of TABG){if(g[0]===nav&&!g[3].length)return g;if(g[3].some(s=>s[0]===nav||(s[3]||[]).includes(nav)))return g}return TABG[0]}
 const dd2=d=>{const x=new Date(d);return [String(x.getDate()).padStart(2,'0')+'/'+String(x.getMonth()+1).padStart(2,'0'),x.getFullYear()]};
 const leftTxt=n=>n<0?`quá ${-n} ngày`:n===0?'hôm nay':`còn ${n} ngày`;
 function upList(up,n){return `<div class="ups">${up.slice(0,n).map(u=>{const [a,y]=dd2(u.d);return `<a class="${u.days<0?'late':u.days<=7?'soon':''}" href="${u.h}"><span class="d">${a}<small>${y}</small></span><span class="w"><b>${esc(u.t)}</b><small>${esc(u.s||'')}</small></span><span class="pill ${u.days<=7?'bad':''}">${leftTxt(u.days)}</span></a>`}).join('')}</div>`}
@@ -1431,18 +1465,18 @@ function needsHtml(p){const nf=QD.length+FORMS.length,nq=CHC.reduce((a,x)=>a+x.q
   <a href="${p?'#nghia-vu':'#ho-so'}" ${p?'':'data-newdn="1"'}><i>🏭</i><b>${p?'Sổ nghĩa vụ của doanh nghiệp':'Nghĩa vụ của doanh nghiệp tôi'}</b><span>${p?`${obStats(p).L.length} nghĩa vụ lọc theo ngành, quy mô, đặc điểm lao động`:'Khai hồ sơ để lọc nghĩa vụ theo ngành, số lao động, địa bàn'}</span></a>
   <a href="#lich"><i>📅</i><b>Lịch hạn tuân thủ</b><span>Mốc báo cáo định kỳ, hạn đóng bảo hiểm, nơi nộp; xuất lịch Outlook, Google</span></a>
   <a href="#cong-cu"><i>🧮</i><b>Công cụ tính và tra cứu</b><span>Làm thêm giờ, bảo hiểm, trợ cấp thôi việc, báo trước, phép năm, lương vùng…</span></a>
+  <a href="#mau-excel"><i>💵</i><b>Bảng lương, ngân sách nhân sự Excel</b><span>File Excel có sẵn công thức: nhập số liệu là tính lương, bảo hiểm, thuế, ngân sách năm</span></a>
   <a href="#thu-vien"><i>📝</i><b>Biểu mẫu điền và tải Word</b><span>${nf} quy định, quy trình, biểu mẫu nhân sự theo Bộ QTDN</span></a>
-  <a href="#viec"><i>🏛️</i><b>Hướng dẫn thủ tục từng bước</b><span>${VL.length} thủ tục: nhận người mới, kỷ luật, cho nghỉ việc, đăng ký nội quy…</span></a>
-  <a href="#kiem-tra"><i>✅</i><b>Tự kiểm tra tuân thủ</b><span>${nq} câu hỏi đối chiếu thực tế, chấm điểm, xuất danh sách việc còn thiếu</span></a></div>`}
+  <a href="#viec"><i>🏛️</i><b>Hướng dẫn thủ tục từng bước</b><span>${VL.length} thủ tục: nhận người mới, kỷ luật, cho nghỉ việc, đăng ký nội quy…</span></a></div>`}
 function toolsHtml(){const T=[['ot','💰 Tiền làm thêm giờ, làm đêm'],['ins','🛡️ Đóng BHXH, BHYT, BHTN'],['sev','📄 Trợ cấp thôi việc, mất việc'],['not','⏱️ Thời hạn báo trước'],['leave','🌴 Phép năm'],['min','📍 Lương tối thiểu vùng'],['prob','🧪 Thử việc'],['lim','📊 Giới hạn làm thêm giờ']];
-  return `<div class="tchips">${T.map(([id,l])=>`<a href="#cong-cu-${id}">${l}</a>`).join('')}<a href="#so-tay-nld">📘 Sổ tay người lao động</a><a href="#noi-quy">📜 Nội quy lao động mẫu</a></div>`}
-function askHtml(){return `<section class="ask"><div><b>Cần luật sư tư vấn nhân sự, lao động?</b><span>Rà soát tuân thủ tại doanh nghiệp, xử lý kỷ luật, chấm dứt hợp đồng, tranh chấp lao động, chuẩn bị thanh tra. Gọi 0918 762 086 hoặc email info@luatcapital.com.</span></div><a href="#tu-van">Gửi yêu cầu tư vấn</a></section>`}
-function welcome(){const n=Object.keys(DNS.list).length;
+  return `<div class="tchips">${T.map(([id,l])=>`<a href="#cong-cu-${id}">${l}</a>`).join('')}<a href="#mau-excel">💵 Bảng lương Excel</a><a href="#mau-excel">📊 Ngân sách nhân sự Excel</a><a href="#so-tay-nld">📘 Sổ tay người lao động</a><a href="#noi-quy">📜 Nội quy lao động mẫu</a></div>`}
+function askHtml(){return `<section class="lsband"><div><b>Cần luật sư tư vấn nhân sự, lao động?</b><span>Rà soát tuân thủ tại doanh nghiệp, xử lý kỷ luật, chấm dứt hợp đồng, tranh chấp lao động, chuẩn bị thanh tra. Gọi 0918 762 086 hoặc email info@luatcapital.com.</span></div><a href="#tu-van">Gửi yêu cầu tư vấn</a></section>`}
+function welcome(){const n=Object.keys(DNS.list).length,m=member();
   return `<section class="hx"><div class="hxb"><div class="eyb">Capital HR · Cẩm nang nhân sự và tuân thủ lao động</div>
   <h1>Tuân thủ lao động cho từng doanh nghiệp: việc cần làm, lịch hạn, biểu mẫu</h1>
   <p>Khai hồ sơ doanh nghiệp một lần để biết đúng những nghĩa vụ phải làm theo ngành nghề, số lao động và đặc điểm lao động; làm thủ tục theo hướng dẫn từng bước, dùng công cụ tính, biểu mẫu tải Word và Sổ tay người lao động mang tên doanh nghiệp. Cẩm nang 27 chương để tra cứu khi cần.</p>
-  <div class="hcta"><a class="pri" href="#ho-so" data-newdn="1">Bắt đầu thiết lập hồ sơ →</a><button type="button" data-demo="1">Xem doanh nghiệp mẫu</button><a href="#viec">Hướng dẫn thủ tục</a><a href="#thu-vien">Biểu mẫu</a>${n?'<a href="#doanh-nghiep">Danh sách doanh nghiệp</a>':''}</div></div>
-  <div class="hbar"><div class="hbi"><span class="n">1</span><span>Khai hồ sơ doanh nghiệp (khoảng 5 phút)</span></div><div class="hbi"><span class="n">2</span><span>Nhận sổ nghĩa vụ và lịch hạn riêng</span></div><div class="hbi"><span class="n">3</span><span>Làm thủ tục, tải mẫu, xuất báo cáo tuân thủ</span></div><div class="hbgo"><a class="btn" href="#ho-so" data-newdn="1">Bắt đầu ngay →</a></div></div></section>
+  <div class="hcta">${m?`<a class="pri" href="#ho-so" data-newdn="1">Thiết lập hồ sơ doanh nghiệp →</a>`:`<button class="pri" type="button" data-mem="1">★ Đăng ký thành viên miễn phí</button><a href="#ho-so" data-newdn="1">Thiết lập hồ sơ doanh nghiệp</a>`}<a href="#viec">Hướng dẫn thủ tục</a><a href="#thu-vien">Biểu mẫu</a>${n?'<a href="#doanh-nghiep">Danh sách doanh nghiệp</a>':''}</div></div>
+  <div class="hbar"><div class="hbi"><span class="n">1</span><span>${m?`Đã đăng ký thành viên: <b>${esc(m.name)}</b>`:'Đăng ký thành viên miễn phí (1 phút)'}</span></div><div class="hbi"><span class="n">2</span><span>Khai hồ sơ doanh nghiệp: ngành, số lao động, đặc điểm</span></div><div class="hbi"><span class="n">3</span><span>Nhận sổ nghĩa vụ, lịch hạn riêng; làm thủ tục, tải mẫu</span></div><div class="hbgo">${m?'<a class="btn" href="#ho-so" data-newdn="1">Khai hồ sơ →</a>':'<button class="btn" type="button" data-mem="1">Đăng ký ngay →</button>'}</div></div></section>
   ${needsHtml(null)}
   <div class="two"><div><h2 class="h2x">Thủ tục hay dùng</h2><div class="vgrid">${['nhan-nguoi-moi','tinh-luong','ky-luat','nld-xin-nghi'].map(id=>VM[id]).filter(Boolean).map(vTile).join('')}</div></div>
   <div><h2 class="h2x">Công cụ dùng nhiều</h2>${toolsHtml()}<div class="tiles"><a href="#thu-vien"><b>${QD.length+FORMS.length}</b><span>quy định, quy trình, biểu mẫu</span></a><a href="#viec"><b>${VL.length}</b><span>thủ tục hướng dẫn từng bước</span></a><a href="#nghia-vu"><b>${OBL.length}</b><span>nghĩa vụ trong bộ lọc theo ngành</span></a><a href="#muc-luc"><b>27</b><span>chương cẩm nang nghiệp vụ</span></a></div></div></div>
@@ -1475,13 +1509,66 @@ function ticker(){let el=$('#tkr');const p=profile(),up=p&&!tkOff?upcoming(45).f
   const html=`<a class="tkl" href="#lich">🔔 Sắp đến hạn</a><div class="tkv"><div class="tkt">${items}${items}</div></div><button class="tkx" type="button" id="tkx">✓ Đã đọc, tắt</button>`;
   if(!el){el=document.createElement('div');el.id='tkr';el.className='tkr';el.setAttribute('aria-label','Hạn sắp đến của '+(p.ten||'doanh nghiệp'));document.body.appendChild(el)}
   el.innerHTML=html;document.body.classList.add('has-tk')}
-function after4(nav){document.querySelectorAll('.ttabs a').forEach(a=>{const k=a.dataset.nav;if(k&&(TABALT[k]||[]).includes(nav))a.classList.add('on')});
-  const on=$('.ttabs a.on');if(on&&on.scrollIntoView){const tb=$('.ttabs');if(tb&&(on.offsetLeft<tb.scrollLeft||on.offsetLeft+on.offsetWidth>tb.scrollLeft+tb.clientWidth))tb.scrollLeft=on.offsetLeft-20}
-  ticker()}
+function purgeDemo(){let x=0;for(const id of Object.keys(DNS.list)){const p=(DNS.list[id]||{}).profile||{};if(p.mst==='0300000000'&&/\(ví dụ\)/.test(p.ten||'')){delDn(id);x++}}return x}
+let purged=false;
+function after4(nav){if(!purged){purged=true;if(purgeDemo()){fillDnSel();render();return}}
+  const g=groupOf(nav);document.querySelectorAll('.ttabs a').forEach(a=>a.classList.toggle('on',a.dataset.g===g[0]));
+  const sb=$('#subtabs');if(sb){sb.hidden=!g[3].length;sb.innerHTML=g[3].map(s=>`<a href="${s[2]}" class="${s[0]===nav||(s[3]||[]).includes(nav)?'on':''}">${esc(s[1])}</a>`).join('')}
+  const on=$('.ttabs a.on'),tb=$('.ttabs');if(on&&tb&&(on.offsetLeft<tb.scrollLeft||on.offsetLeft+on.offsetWidth>tb.scrollLeft+tb.clientWidth))tb.scrollLeft=on.offsetLeft-20;
+  memBtn();ticker()}
+/* đăng ký thành viên */
+const MEMBER_ROLES=['Nhân sự, tiền lương','Hợp đồng, kỷ luật lao động','Bảo hiểm, thuế TNCN','An toàn, vệ sinh lao động','Lao động nước ngoài','Tranh chấp lao động','Pháp chế, quản trị doanh nghiệp'];
+function member(){return LS.get('member',null)}
+function memBtn(){const b=$('#membtn');if(!b)return;const m=member();b.innerHTML=m?`★ <span class="mt">Thành viên: ${esc(String(m.name).trim().split(/\s+/).pop())}</span>`:'★ <span class="mt">Đăng ký thành viên</span>';b.classList.toggle('on',!!m)}
+function memText(m){return `Đăng ký thành viên – Capital HR (Cẩm nang nhân sự)\nHọ tên: ${m.name}\nDoanh nghiệp: ${m.co}\nChức vụ: ${m.pos||'…'}\nSố lao động: ${m.ld||'…'}\nEmail: ${m.email}\nĐiện thoại / Zalo: ${m.tel}\nLĩnh vực quan tâm: ${(m.roles||[]).join(', ')||'…'}\nĐồng ý xử lý dữ liệu cá nhân lúc: ${new Date(m.at).toLocaleString('vi-VN')}`}
+function memClose(){const o=$('#memo');if(o)o.remove()}
+function openMem(edit){memClose();const m=member(),o=document.createElement('div');o.id='memo';o.className='memo';
+  const ben=`<ul class="memb"><li>Lưu hồ sơ nhiều doanh nghiệp, điền và tải biểu mẫu Word nhanh hơn</li><li>Nhận thông báo khi pháp luật lao động thay đổi và khi cẩm nang được cập nhật</li><li>Được luật sư Hãng Luật Capital ưu tiên giải đáp câu hỏi về nhân sự, lao động</li><li>Được mời tham dự hội thảo, chương trình đào tạo về tuân thủ lao động</li></ul>`;
+  let body;
+  if(m&&!edit){const t=memText(m);body=`<h2>Thành viên Capital HR</h2><p class="memn"><b>${esc(m.name)}</b> · ${esc(m.co)}${m.pos?' · '+esc(m.pos):''}<br>${esc(m.email)} · ${esc(m.tel)}</p>${ben}
+    <p class="memnote">${m.sent?'Đã gửi thông tin đăng ký. Hãng Luật Capital sẽ liên hệ xác nhận.':'<b>Bước cuối:</b> gửi thông tin đăng ký đến Hãng Luật Capital qua Email hoặc Zalo để được kích hoạt quyền lợi thành viên.'}</p>
+    <div class="memact"><a class="btn" id="m-mail" href="mailto:info@luatcapital.com?subject=${encodeURIComponent('Đăng ký thành viên – Capital HR')}&body=${encodeURIComponent(t)}">Gửi qua Email</a><button class="btn zb" type="button" id="m-zalo">Gửi qua Zalo</button><button class="btn ghost" type="button" id="m-edit">Sửa thông tin</button><button class="btn ghost" type="button" id="m-out">Xóa thông tin trên máy này</button><button class="btn ghost" type="button" id="m-x">Đóng</button></div>`}
+  else{const v=m||{roles:[]};body=`<h2>Đăng ký thành viên Capital HR</h2><p class="memi">Miễn phí cho doanh nghiệp và người làm nhân sự, tiền lương, pháp chế, hành chính.</p>${ben}
+    <form id="memf" novalidate><div class="memg"><label>Họ và tên *<input id="m-name" value="${esc(v.name||'')}" autocomplete="name"></label><label>Doanh nghiệp *<input id="m-co" value="${esc(v.co||'')}" autocomplete="organization"></label>
+    <label>Chức vụ<input id="m-pos" value="${esc(v.pos||'')}" autocomplete="organization-title"></label><label>Số lao động<select id="m-ld">${['','Dưới 10','10 – 49','50 – 199','200 – 999','1.000 trở lên'].map(x=>`<option ${x===(v.ld||'')?'selected':''}>${x}</option>`).join('')}</select></label>
+    <label>Email *<input id="m-email" type="email" value="${esc(v.email||'')}" autocomplete="email"></label><label>Điện thoại / Zalo *<input id="m-tel" type="tel" value="${esc(v.tel||'')}" autocomplete="tel"></label></div>
+    <fieldset class="memr"><legend>Lĩnh vực quan tâm</legend>${MEMBER_ROLES.map(r=>`<label><input type="checkbox" value="${esc(r)}" ${(v.roles||[]).includes(r)?'checked':''}> ${esc(r)}</label>`).join('')}</fieldset>
+    <label class="memc"><input type="checkbox" id="m-ok" ${m?'checked':''}> <span>Tôi đồng ý để Hãng Luật Capital thu thập và xử lý các thông tin trên nhằm quản lý thành viên, gửi cập nhật pháp luật và liên hệ tư vấn, theo Luật Bảo vệ dữ liệu cá nhân năm 2025. Tôi có thể rút lại sự đồng ý bất cứ lúc nào qua email info@luatcapital.com. *</span></label>
+    <p class="memnote">Thông tin lưu trên trình duyệt của anh/chị và chỉ gửi đến Hãng Luật Capital khi anh/chị bấm Gửi ở bước sau.</p><p class="memerr" id="m-err" role="alert"></p>
+    <div class="memact"><button class="btn" type="submit">Đăng ký</button><button class="btn ghost" type="button" id="m-x">Để sau</button></div></form>`}
+  o.innerHTML=`<div class="memp" role="dialog" aria-modal="true" aria-label="Đăng ký thành viên"><button class="memx" type="button" id="m-x2" aria-label="Đóng">×</button>${body}</div>`;
+  document.body.appendChild(o);o.addEventListener('click',e=>{if(e.target===o)memClose()});
+  const f=$('#memf');if(f){$('#m-name').focus();f.addEventListener('submit',e=>{e.preventDefault();const g=id=>$('#'+id).value.trim(),err=$('#m-err');
+    const nm={name:g('m-name'),co:g('m-co'),pos:g('m-pos'),ld:$('#m-ld').value,email:g('m-email'),tel:g('m-tel'),roles:[...document.querySelectorAll('.memr input:checked')].map(i=>i.value),at:Date.now(),sent:false};
+    if(!nm.name||!nm.co||!nm.email||!nm.tel){err.textContent='Vui lòng điền các ô có dấu *';return}
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(nm.email)){err.textContent='Email chưa đúng định dạng';return}
+    if(!$('#m-ok').checked){err.textContent='Vui lòng đánh dấu đồng ý xử lý dữ liệu cá nhân';return}
+    LS.set('member',nm);memBtn();toast('Đã lưu thông tin đăng ký');openMem(false);if((location.hash||'#trang-chu')==='#trang-chu'&&!profile())render()})}
+  else{const t=memText(m);$('#m-mail').addEventListener('click',()=>{m.sent=true;LS.set('member',m)});
+    $('#m-zalo').addEventListener('click',()=>{const done=()=>{m.sent=true;LS.set('member',m);window.open('https://zalo.me/0918762086','_blank','noopener')};try{navigator.clipboard.writeText(t).then(()=>{toast('Đã chép nội dung, dán vào Zalo để gửi');done()},()=>{toast('Hãy chép nội dung và dán vào Zalo');done()})}catch(e){done()}});
+    $('#m-edit').addEventListener('click',()=>openMem(true));
+    $('#m-out').addEventListener('click',()=>{try{localStorage.removeItem('cnns-member')}catch(e){}memBtn();memClose();toast('Đã xóa thông tin thành viên trên máy này');render()})}
+  document.querySelectorAll('#m-x,#m-x2').forEach(b=>b.addEventListener('click',memClose))}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')memClose()});
+document.addEventListener('click',e=>{const t=e.target.closest('[data-mem],#membtn');if(!t)return;e.preventDefault();openMem(false)});
 document.addEventListener('click',e=>{const t=e.target.closest('#tkx,#fsbtn');if(!t)return;
   if(t.id==='tkx'){tkOff=true;try{sessionStorage.setItem('cnns-tkoff','1')}catch(e){}ticker();return}
   if(t.id==='fsbtn'){const d=document;if(d.fullscreenElement){d.exitFullscreen();return}
     if(d.fullscreenEnabled&&d.documentElement.requestFullscreen){d.documentElement.requestFullscreen().catch(()=>window.open(location.href,'_blank'))}else window.open(location.href,'_blank')}});
+
+/* mẫu Excel có công thức */
+const XLS=[
+ {id:'XL-LUONG',fn:'Mau bang luong co cong thuc - Capital HR.xlsx',t:'Bảng lương tháng có công thức',ic:'💵',
+  d:'Nhập lương cơ bản, phụ cấp, ngày công, giờ làm thêm, người phụ thuộc: bảng tự tính lương theo ngày công, làm thêm giờ, làm đêm, BHXH, BHYT, BHTN, đoàn phí, thuế TNCN, thực lĩnh và chi phí doanh nghiệp.',
+  f:['Trang Thông số: vùng, lương tối thiểu vùng 2026–2027, lương cơ sở 2.530.000 đ, tỷ lệ bảo hiểm, giảm trừ 15,5/6,2 triệu, biểu thuế 05 bậc','100 dòng nhân viên, chọn Có/Không đóng bảo hiểm, người nước ngoài, đoàn viên công đoàn, cách tính thuế','Tự trừ phần làm thêm giờ, làm đêm được miễn thuế; trần đóng bảo hiểm 20 lần lương cơ sở và 20 lần lương tối thiểu vùng','Cột cảnh báo: lương dưới mức tối thiểu vùng, làm thêm quá 40 giờ/tháng, thực lĩnh âm','Trang Phiếu lương: chọn mã nhân viên để in phiếu gửi người lao động']},
+ {id:'XL-NGANSACH',fn:'Mau ngan sach nhan su co cong thuc - Capital HR.xlsx',t:'Ngân sách nhân sự năm có công thức',ic:'📊',
+  d:'Nhập định biên từng vị trí, kế hoạch tuyển và giảm, mức lương bình quân, tỷ lệ tăng lương: bảng tự tính số lao động, quỹ lương, bảo hiểm, thưởng tháng 13, tuyển dụng, đào tạo, phúc lợi theo từng tháng và cả năm.',
+  f:['Trang Định biên: 40 dòng vị trí, tháng vào làm và tháng giảm, % làm thêm giờ ước tính','Trang Theo tháng: số lao động, quỹ lương, BH và KPCĐ từng tháng của từng vị trí','Trang Tổng hợp: 8 khoản mục chi phí theo tháng, tỷ trọng, chi phí bình quân/người, tỷ lệ trên doanh thu','Bảng theo bộ phận để giao ngân sách cho từng trưởng bộ phận','Lập nhiều phương án bằng cách đổi tỷ lệ tăng lương, thưởng, chi phí theo đầu người']}];
+async function dlXls(id){const x=XLS.find(a=>a.id===id);if(!x)return;try{toast('Đang tải '+x.t+'…');let b;const r=await fetch('files/'+id+'.json');if(r.ok){const j=await r.json(),bin=atob(j.b),u=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)u[i]=bin.charCodeAt(i);b=u}else{const r2=await fetch('files/'+id+'.xlsx');if(!r2.ok)throw 0;b=await r2.blob()}saveBlob(new Blob([b],{type:MIME.xlsx}),x.fn)}catch(e){toast('Không tải được file. Hãy mở trang qua máy chủ web rồi thử lại.')}}
+function xlsCards(){return `<div class="xlg">${XLS.map(x=>`<section class="xlc"><div class="xlh"><i>${x.ic}</i><div><h3>${esc(x.t)}</h3><span>Excel · có công thức · nhập số liệu là dùng được</span></div></div><p>${esc(x.d)}</p><ul>${x.f.map(f=>`<li>${esc(f)}</li>`).join('')}</ul><button class="btn" type="button" data-xls="${x.id}">⬇ Tải file Excel</button></section>`).join('')}</div>`}
+function xlsView(){return `<p class="kick">Biểu mẫu</p><h1 class="h1">Mẫu Excel bảng lương, ngân sách nhân sự</h1><p class="lead">Hai file Excel có sẵn công thức theo quy định 2026: doanh nghiệp nhập số liệu vào ô nền vàng là dùng được ngay. Ô nền trắng tự tính, không cần sửa.</p>${xlsCards()}
+  <section class="card" style="margin-top:18px"><h2>Lưu ý khi dùng</h2><ul><li>Kiểm tra trang Thông số mỗi khi lương tối thiểu vùng, lương cơ sở, giảm trừ gia cảnh hoặc biểu thuế thay đổi.</li><li>Ngày công chuẩn, hệ số làm thêm giờ, các khoản phụ cấp tính đóng bảo hiểm phải khớp quy chế lương và hợp đồng lao động của doanh nghiệp.</li><li>Trường hợp đặc biệt (thử việc, nghỉ thai sản, thu nhập từ nhiều nơi, quyết toán thuế năm) cần điều chỉnh riêng. Dùng <a href="#cong-cu-pit">công cụ tính thuế TNCN</a> để đối chiếu.</li></ul></section>`}
+document.addEventListener('click',e=>{const t=e.target.closest('[data-xls]');if(!t)return;e.preventDefault();dlXls(t.dataset.xls)});
 
 /* ================= ROUTER ================= */
 function render(){const h=(location.hash||'#trang-chu').slice(1);let nav='home',html;
