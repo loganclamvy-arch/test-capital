@@ -756,6 +756,8 @@ body.bk-on .ttsb{bottom:calc(var(--vb,0px) + 80px)}
 @media print{.lsn,.ttsb,.bk,.lgsw{display:none!important}}
 
 .hd .brand b{font-size:19px;letter-spacing:1.5px;text-transform:uppercase}
+
+.faqcite{font-weight:700;color:var(--green);background:#EEF5F0;border-radius:4px;padding:0 4px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
 </style>
 <script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;const t=c.closest('table');c.dataset.l=(t.tHead&&t.tHead.rows[0].cells[i]?.textContent)||''}}).observe(document,{childList:true,subtree:true})</script>
 </head>
@@ -1872,7 +1874,11 @@ function updView(sel){const L=QD.filter(q=>q.upd&&q.upd.length);const by={};L.fo
 const FAQ=D2.faq||{g:[],q:[]},FAQG={};FAQ.g.forEach(([k,t])=>FAQG[k]=t);
 TABG.splice(5,0,['faq','Hỏi đáp','#hoi-dap',[],[['faq','Tất cả nhóm câu hỏi','#hoi-dap']].concat(FAQ.g.map(([k,t])=>[k,t,'#hoi-dap/'+k]))]);
 let faqG='';
-function faqItem(x,i,showG){return `<details class="faqi" data-s="${esc(norm(x.q+' '+x.a+' '+x.c))}"><summary><span class="faqn">${i}</span><span class="faqt">${esc(x.q)}</span>${showG?`<span class="faqg">${esc(FAQG[x.g]||'')}</span>`:''}</summary><div class="faqa"><p>${esc(x.a)}</p><p class="faqc">${x.c?`<b>Căn cứ pháp lý:</b> ${esc(x.c)}`:''}${x.v&&VM[x.v]?` <a class="faqv" href="#viec-${x.v}">→ Thủ tục: ${esc(VM[x.v].t)}</a>`:''}</p></div></details>`}
+function faqA(x){const c=x.c||'';if(!c)return esc(x.a);
+  if(/^Không có/.test(c))return esc(x.a)+` <span class="faqcite">(${esc(c)}).</span>`;
+  const m=x.a.match(/^(Không được|Không nên|Không bắt buộc|Có thể|Không|Có|Được|Nên|Phải)\.\s+/);
+  return (m?`<b>${esc(m[1])}.</b> `:'')+`<span class="faqcite">Căn cứ ${esc(c)}:</span> `+esc(m?x.a.slice(m[0].length):x.a)}
+function faqItem(x,i,showG){return `<details class="faqi" data-s="${esc(norm(x.q+' '+x.a+' '+x.c))}"><summary><span class="faqn">${i}</span><span class="faqt">${esc(x.q)}</span>${showG?`<span class="faqg">${esc(FAQG[x.g]||'')}</span>`:''}</summary><div class="faqa"><p>${faqA(x)}</p>${x.v&&VM[x.v]?`<p class="faqc"><a class="faqv" href="#viec-${x.v}">→ Thủ tục làm từng bước: ${esc(VM[x.v].t)}</a></p>`:''}</div></details>`}
 function faqView(g){faqG=FAQG[g]?g:'';const cnt=k=>FAQ.q.filter(x=>x.g===k).length;let no=0;
   const body=faqG?`<section class="faqs"><h2 class="faqh"><span>${esc(FAQG[faqG])}</span><em>${cnt(faqG)} câu</em></h2>${FAQ.q.filter(x=>x.g===faqG).map(x=>faqItem(x,++no)).join('')}</section>`
    :FAQ.g.map(([k,t])=>{const L=FAQ.q.filter(x=>x.g===k);return L.length?`<section class="faqs" id="faq-${k}"><h2 class="faqh"><span>${esc(t)}</span><em>${L.length} câu</em><a href="#hoi-dap/${k}">Xem riêng nhóm →</a></h2>${L.map(x=>faqItem(x,++no)).join('')}</section>`:''}).join('');
