@@ -802,6 +802,9 @@ main p,main .muted,main li,main dd,.doc p,.doc li,.side .frow>div,.dl .frow>div{
 .card>.frow,.dl>.frow{grid-column:1/-1;grid-template-columns:subgrid;column-gap:12px}
 .frow code{white-space:nowrap}
 .frow>div a{text-decoration-thickness:1px;text-underline-offset:2px}
+td.num,th.num{white-space:nowrap!important}
+/* tiêu đề căn đều: không chia dòng kiểu "balance" (gây khoảng trắng lớn khi justify) */
+main h1,main h2,main h3,main h4,main .h1{text-wrap:pretty!important}
 </style>
 <script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;const t=c.closest('table');c.dataset.l=(t.tHead&&t.tHead.rows[0].cells[i]?.textContent)||''}}).observe(document,{childList:true,subtree:true})</script>
 </head>
@@ -2202,6 +2205,27 @@ function decoView(){const v=$('#view');if(!v)return;const h=v.querySelector('h1.
 (function(){const v=$('#view');if(!v)return;let t=null;new MutationObserver(()=>{clearTimeout(t);t=setTimeout(decoView,120)}).observe(v,{childList:true,subtree:true});decoView()})();
 lgMark();if(LANG!=='vi')setTimeout(()=>setLang(LANG,true),200);
 window.cnnsData=()=>({CH,D,esc});
+/* ===== Căn đều tự động cho MỌI khối chữ trên mọi trang (kể cả nội dung thêm sau) =====
+   Khối nào đang căn trái (left/start) và có chữ trực tiếp → justify, dòng cuối căn trái.
+   Không đụng tới nút bấm, ô nhập, thanh menu, mã, khối căn giữa/căn phải. */
+(function(){const SKIP='button,input,select,textarea,option,code,pre,svg,.btn,nav,.tabs,.subtabs,.hd,.lgsw,.ttsb,.tkr,.fbs,.bkbar,.bknav,.bkcov,.bkcover,[contenteditable]';
+  const done=new WeakSet();
+  function hasText(el){for(const n of el.childNodes)if(n.nodeType===3&&n.nodeValue.trim().length>1)return true;
+    for(const c of el.children){const d=getComputedStyle(c).display;if(d.startsWith('inline')&&!c.matches(SKIP)&&c.textContent.trim().length>1)return true}return false}
+  function fix(root){if(!root||!root.querySelectorAll)return;const els=[root,...root.querySelectorAll('*')];
+    for(const el of els){if(done.has(el)||el.closest(SKIP))continue;const cs=getComputedStyle(el);
+      if(cs.display==='none'||cs.display.startsWith('inline')&&cs.display!=='inline-block')continue;
+      const ta=cs.textAlign;if(ta!=='left'&&ta!=='start'&&ta!=='justify')continue;if(cs.whiteSpace==='nowrap'||cs.whiteSpace==='pre')continue;
+      if(!hasText(el))continue;done.add(el);
+      if(ta!=='justify'||cs.textAlignLast==='auto'){el.style.setProperty('text-align','justify','important');el.style.setProperty('text-align-last','left','important')}
+      el.style.hyphens='auto';if(cs.textWrap==='balance'||cs.textWrapStyle==='balance')el.style.setProperty('text-wrap','pretty','important')}}
+  let q=new Set(),t=0;const run=()=>{t=0;const a=[...q];q.clear();a.forEach(fix)};
+  const sched=n=>{q.add(n);if(!t)t=setTimeout(run,60)};
+  const start=()=>{sched(document.querySelector('main')||document.body);
+    new MutationObserver(ms=>{for(const m of ms)for(const n of m.addedNodes)if(n.nodeType===1)sched(n.parentElement||n)}).observe(document.body,{childList:true,subtree:true})};
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
+  const again=()=>setTimeout(()=>sched(document.querySelector('main')||document.body),150);document.addEventListener('click',again);addEventListener('hashchange',again);document.addEventListener('toggle',again,true);
+  window.cnnsJustify=fix})();
 
 /* ================= ROUTER ================= */
 function render(){const h=(location.hash||'#trang-chu').slice(1);let nav='home',html;
