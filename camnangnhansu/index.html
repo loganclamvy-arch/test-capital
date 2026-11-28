@@ -792,6 +792,16 @@ body.bk-on .ttsb{bottom:calc(var(--vb,0px) + 80px)}
 .ttsb .ttsmin{font-weight:800}
 body.bk-on.tts-on.tts-dock .bkstage{padding-bottom:66px}
 body.bk-on .ttsb:not(.free){bottom:calc(var(--vb,0px) + 74px)}
+/* ===== Căn đều toàn website: đoạn dẫn trải hết chiều rộng như phần bên dưới ===== */
+main p,main .muted,main .lead,main li,main dd,main dt,.doc p,.doc ul,.doc li{max-width:none!important}
+main p,main .muted,main li,main dd,.doc p,.doc li,.side .frow>div,.dl .frow>div{text-align:justify;text-align-last:left;text-justify:inter-word;hyphens:auto;-webkit-hyphens:auto}
+.hero p,.welcome p,.bkcover p,[style*="text-align:center"] p,p[style*="text-align:center"]{text-align-last:center}
+/* danh sách mã – tên (Hồ sơ kèm theo, danh mục biểu mẫu): cột mã thẳng hàng, tên căn đều */
+.card:has(>.frow),.dl:has(>.frow){display:grid;grid-template-columns:max-content minmax(0,1fr);column-gap:12px}
+.card:has(>.frow)>:not(.frow),.dl:has(>.frow)>:not(.frow){grid-column:1/-1}
+.card>.frow,.dl>.frow{grid-column:1/-1;grid-template-columns:subgrid;column-gap:12px}
+.frow code{white-space:nowrap}
+.frow>div a{text-decoration-thickness:1px;text-underline-offset:2px}
 </style>
 <script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;const t=c.closest('table');c.dataset.l=(t.tHead&&t.tHead.rows[0].cells[i]?.textContent)||''}}).observe(document,{childList:true,subtree:true})</script>
 </head>
