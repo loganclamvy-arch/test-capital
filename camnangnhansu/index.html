@@ -779,6 +779,19 @@ body.bk-on .ttsb{bottom:calc(var(--vb,0px) + 80px)}
 .bkhero .bkact .btn{justify-content:center;text-align:center;white-space:nowrap;padding-left:8px;padding-right:8px;width:100%}
 .bkhero .bkst{gap:12px}
 @media(max-width:900px){.bkhero .bkact{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* sách: chỉ chiếm phần khung nhìn thấy được (cả chiều ngang khi nhúng Google Sites) */
+.bk{left:var(--vl,0px)!important;right:var(--vr,0px)!important}
+/* thanh nghe: kéo được, thu nhỏ được, không che trang sách */
+.ttsb{left:calc(var(--vl,0px) + (100% - var(--vl,0px) - var(--vr,0px)) / 2)}
+.ttsb.free{transform:none!important;bottom:auto!important;right:auto}
+.ttsb.drag{opacity:.92;box-shadow:0 18px 40px rgba(0,0,0,.45)}
+.ttsg{cursor:grab;user-select:none;touch-action:none;font-size:18px;line-height:1;color:#D2B670;padding:4px 2px;margin-left:-4px}
+.ttsb.drag .ttsg{cursor:grabbing}
+.ttsb.min{padding:6px 7px;gap:6px}
+.ttsb.min .ttsl,.ttsb.min select,.ttsb.min [data-tts=next],.ttsb.min [data-tts=stop]{display:none}
+.ttsb .ttsmin{font-weight:800}
+body.bk-on.tts-on.tts-dock .bkstage{padding-bottom:66px}
+body.bk-on .ttsb:not(.free){bottom:calc(var(--vb,0px) + 74px)}
 </style>
 <script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;const t=c.closest('table');c.dataset.l=(t.tHead&&t.tHead.rows[0].cells[i]?.textContent)||''}}).observe(document,{childList:true,subtree:true})</script>
 </head>
@@ -2007,8 +2020,8 @@ function ticker(){let el=$('#tkr'),re=$('#tkre');const on=store.get('tk-on',true
 (function(){if(window.top===window.self||!('IntersectionObserver' in window))return;
   const vp=document.createElement('div');vp.setAttribute('aria-hidden','true');vp.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;pointer-events:none;opacity:0;z-index:-1';document.body.appendChild(vp);
   const th=[];for(let i=0;i<=400;i++)th.push(i/400);let last='';
-  const apply=r=>{if(!r||r.height<=0)return;const b=Math.max(0,Math.round(innerHeight-r.bottom)),t=Math.max(0,Math.round(r.top)),k=b+'/'+t;if(k===last)return;last=k;
-    const st=document.documentElement.style;st.setProperty('--vb',b+'px');st.setProperty('--vt',t+'px');document.body.classList.add('emb')};
+  const apply=r=>{if(!r||r.height<=0||r.width<=0)return;const b=Math.max(0,Math.round(innerHeight-r.bottom)),t=Math.max(0,Math.round(r.top)),l=Math.max(0,Math.round(r.left)),rr=Math.max(0,Math.round(innerWidth-r.right)),k=[b,t,l,rr].join('/');if(k===last)return;last=k;
+    const st=document.documentElement.style;st.setProperty('--vb',b+'px');st.setProperty('--vt',t+'px');st.setProperty('--vl',l+'px');st.setProperty('--vr',rr+'px');document.body.classList.add('emb');dispatchEvent(new Event('cnns-vp'))};
   new IntersectionObserver(es=>apply(es[es.length-1].intersectionRect),{threshold:th}).observe(vp);
   addEventListener('resize',()=>{last=''})})();
 
@@ -2051,7 +2064,7 @@ function bkClose(){ttsStop();if(BK.el)BK.el.hidden=true;document.body.classList.
 function bkLoad(ci,last){BK.ci=ci;BK.sp=0;BK.goLast=!!last;const pg=$('#bkpg');pg.innerHTML=bkChapHtml(ci);pg.scrollLeft=0;$('#bksel').value=String(ci);
   const c=CH.find(x=>x.no===ci);$('#bkt').textContent=ci?`Chương ${ci}. ${c.title}`:'Cẩm nang nghiệp vụ nhân sự';if(ci)store.set('bk-last',ci);bkLayout()}
 function bkLayout(keep){const st=$('#bkstage'),bk=$('#bkbook'),pg=$('#bkpg');if(!st)return;const anchor=keep?bkFirstVisible():null;
-  const W0=st.clientWidth-24,H0=st.clientHeight-20;BK.two=W0>=780;const m=W0<520?18:34;
+  const sc=getComputedStyle(st),W0=st.clientWidth-parseFloat(sc.paddingLeft)-parseFloat(sc.paddingRight),H0=st.clientHeight-parseFloat(sc.paddingTop)-parseFloat(sc.paddingBottom);BK.two=W0>=780;const m=W0<520?18:34;
   const W=Math.min(W0,BK.two?1240:680),H=Math.max(260,H0);bk.style.width=W+'px';bk.style.height=H+'px';bk.classList.toggle('one',!BK.two);
   const cw=BK.two?(W-4*m)/2:W-2*m;Object.assign(pg.style,{left:m+'px',right:m+'px',top:'30px',bottom:'34px',columnWidth:cw+'px',columnGap:2*m+'px',fontSize:BK.fs+'px'});
   BK.step=BK.two?W:W;BK.colw=cw+2*m;pg.style.setProperty('--ph',(H-64)+'px');
@@ -2090,23 +2103,38 @@ function ttsVoices(){return new Promise(r=>{if(!('speechSynthesis' in window))re
 function ttsPick(vs){const l=TTSL[LANG]||'vi',c=vs.filter(v=>v.lang.toLowerCase().replace('_','-').startsWith(l));return c.find(v=>/natural|online|google|neural/i.test(v.name))||c[0]||null}
 function ttsSplit(t){t=t.replace(/\s+/g,' ').trim();const out=[];(t.match(/[^.!?;:。！？]+[.!?;:。！？]*\s*/g)||[t]).forEach(s=>{s=s.trim();while(s.length>220){let k=s.lastIndexOf(',',220);if(k<80)k=s.lastIndexOf(' ',220);if(k<40)k=220;out.push(s.slice(0,k+1));s=s.slice(k+1).trim()}if(s)out.push(s)});return out}
 function ttsBar(){let b=$('#ttsb');if(!b){b=document.createElement('div');b.id='ttsb';b.className='ttsb notranslate';b.setAttribute('translate','no');document.body.appendChild(b)}
-  b.innerHTML=`<span class="ttsw">🎧</span><span class="ttsl" id="ttsl">Đang đọc…</span><button type="button" data-tts="pause" id="ttsp">⏸</button><button type="button" data-tts="next" title="Đoạn tiếp">⏭</button><select id="ttsr" aria-label="Tốc độ đọc">${[0.8,0.9,1,1.15,1.3,1.5].map(r=>`<option value="${r}" ${r===TTS.rate?'selected':''}>${r}×</option>`).join('')}</select><button type="button" data-tts="stop" title="Dừng">⏹</button>`;b.hidden=false;return b}
+  b.innerHTML=`<span class="ttsg" title="Kéo để di chuyển (bấm đúp để về chỗ cũ)" aria-label="Di chuyển thanh nghe">⠿</span><span class="ttsw">🎧</span><span class="ttsl" id="ttsl">Đang đọc…</span><button type="button" data-tts="pause" id="ttsp">⏸</button><button type="button" data-tts="next" title="Đoạn tiếp">⏭</button><select id="ttsr" aria-label="Tốc độ đọc">${[0.8,0.9,1,1.15,1.3,1.5].map(r=>`<option value="${r}" ${r===TTS.rate?'selected':''}>${r}×</option>`).join('')}</select><button type="button" data-tts="stop" title="Dừng">⏹</button><button type="button" data-tts="min" class="ttsmin" title="Thu nhỏ / mở rộng">${TTS.min?'⤢':'–'}</button>`;b.classList.toggle('min',!!TTS.min);ttsPosApply(b);b.hidden=false;return b}
+function ttsPosApply(b){let p=null;try{p=JSON.parse(localStorage.getItem('cnns-ttspos')||'null')}catch(e){}
+  if(p&&typeof p.x==='number'){b.classList.add('free');b.style.left=Math.round(p.x*innerWidth)+'px';b.style.top=Math.round(p.y*innerHeight)+'px';requestAnimationFrame(()=>ttsClamp(b))}else{b.classList.remove('free');b.style.left=b.style.top=''}
+  document.body.classList.toggle('tts-dock',!b.classList.contains('free'))}
+function ttsClamp(b){const r=b.getBoundingClientRect(),cs=getComputedStyle(document.documentElement),v=k=>parseFloat(cs.getPropertyValue(k))||0;
+  const x=Math.min(Math.max(v('--vl')+6,r.left),innerWidth-v('--vr')-r.width-6),y=Math.min(Math.max(v('--vt')+6,r.top),innerHeight-v('--vb')-r.height-6);b.style.left=x+'px';b.style.top=y+'px';return[x,y]}
+function ttsRelayout(){if(BK.el&&!BK.el.hidden)setTimeout(()=>bkLayout(true),30)}
+document.addEventListener('pointerdown',e=>{const g=e.target.closest('.ttsg');if(!g)return;const b=g.closest('.ttsb');e.preventDefault();const r=b.getBoundingClientRect(),dx=e.clientX-r.left,dy=e.clientY-r.top;
+  b.classList.add('free','drag');b.style.left=r.left+'px';b.style.top=r.top+'px';document.body.classList.remove('tts-dock');ttsRelayout();
+  const mv=ev=>{b.style.left=(ev.clientX-dx)+'px';b.style.top=(ev.clientY-dy)+'px';ttsClamp(b)};
+  const up=()=>{removeEventListener('pointermove',mv);removeEventListener('pointerup',up);b.classList.remove('drag');const[x,y]=ttsClamp(b);try{localStorage.setItem('cnns-ttspos',JSON.stringify({x:x/innerWidth,y:y/innerHeight}))}catch(er){}};
+  addEventListener('pointermove',mv);addEventListener('pointerup',up)});
+document.addEventListener('dblclick',e=>{if(!e.target.closest('.ttsg'))return;try{localStorage.removeItem('cnns-ttspos')}catch(er){}const b=$('#ttsb');if(b){ttsPosApply(b);ttsRelayout()}});
+addEventListener('resize',()=>{const b=$('#ttsb');if(b&&b.classList.contains('free'))ttsClamp(b)});
+addEventListener('cnns-vp',()=>{const b=$('#ttsb');if(b&&b.classList.contains('free'))ttsClamp(b);if(BK.el&&!BK.el.hidden)bkLayout(true)});
 async function ttsStart(els,src){ttsStop();if(!('speechSynthesis' in window)){toast('Trình duyệt này không hỗ trợ đọc thành tiếng. Hãy dùng Chrome, Edge hoặc Safari bản mới.');return}
   const vs=await ttsVoices();TTS.voice=ttsPick(vs);
   if(!TTS.voice&&LANG==='vi')toast('Thiết bị chưa có giọng đọc tiếng Việt. Dùng Microsoft Edge (giọng HoaiMy, NamMinh), điện thoại Android/iPhone, hoặc cài giọng tiếng Việt trong Cài đặt › Thời gian và ngôn ngữ › Giọng nói của Windows.');
   if(LANG!=='vi'){els.forEach(el=>trScan(el));trFlush();for(let i=0;i<50&&(TR.q.size||trActive);i++)await new Promise(r=>setTimeout(r,160))}
   TTS.q=[];els.forEach(el=>{if(el.closest('.vi-o'))return;ttsSplit(ttsText(el)).forEach(t=>{if(/[\p{L}\p{N}]/u.test(t))TTS.q.push({el,t})})});if(!TTS.q.length){toast('Không có nội dung để đọc ở trang này.');return}
-  TTS.i=0;TTS.on=true;TTS.src=src||'page';ttsBar();document.body.classList.add('tts-on');const pb=$('#bkplay');if(pb&&src==='book')pb.textContent='⏹ Dừng nghe';ttsNext()}
+  TTS.i=0;TTS.on=true;TTS.src=src||'page';ttsBar();document.body.classList.add('tts-on');ttsRelayout();const pb=$('#bkplay');if(pb&&src==='book')pb.textContent='⏹ Dừng nghe';ttsNext()}
 function ttsNext(){if(!TTS.on)return;if(TTS.i>=TTS.q.length){if(TTS.src==='book'&&(BK.sp<BK.n-1||BK.ci<CH.length)){const old=BK.ci;bkMove(1);setTimeout(()=>{TTS.on=false;ttsBook(true)},old===BK.ci?150:600);return}ttsStop();return}
   const it=TTS.q[TTS.i];if(TTS.cur!==it.el){if(TTS.cur)TTS.cur.classList.remove('tts-hl');TTS.cur=it.el;it.el.classList.add('tts-hl');if(TTS.src!=='book'){const r=it.el.getBoundingClientRect();if(r.top<70||r.bottom>innerHeight-90)it.el.scrollIntoView({block:'center',behavior:'smooth'})}}
   const l=$('#ttsl');if(l)l.textContent=it.t.slice(0,90)+(it.t.length>90?'…':'');
   const u=new SpeechSynthesisUtterance(it.t);u.lang=TTS.voice?TTS.voice.lang:({vi:'vi-VN',en:'en-US','zh-CN':'zh-CN',ko:'ko-KR',ja:'ja-JP'})[LANG];if(TTS.voice)u.voice=TTS.voice;u.rate=TTS.rate;
   u.onend=()=>{if(!TTS.on||TTS.paused)return;TTS.i++;ttsNext()};u.onerror=e=>{if(e.error==='interrupted'||e.error==='canceled')return;TTS.i++;ttsNext()};
   speechSynthesis.speak(u)}
-function ttsStop(){TTS.on=false;TTS.paused=false;if('speechSynthesis' in window)speechSynthesis.cancel();if(TTS.cur)TTS.cur.classList.remove('tts-hl');TTS.cur=null;const b=$('#ttsb');if(b)b.hidden=true;document.body.classList.remove('tts-on');const pb=$('#bkplay');if(pb)pb.textContent='▶ Nghe'}
+function ttsStop(){TTS.on=false;TTS.paused=false;if('speechSynthesis' in window)speechSynthesis.cancel();if(TTS.cur)TTS.cur.classList.remove('tts-hl');TTS.cur=null;const b=$('#ttsb');if(b)b.hidden=true;document.body.classList.remove('tts-on');ttsRelayout();const pb=$('#bkplay');if(pb)pb.textContent='▶ Nghe'}
 function ttsBook(cont){const els=bkVisibleEls();if(!els.length&&cont){bkMove(1);setTimeout(()=>ttsBook(true),500);return}ttsStart(els,'book')}
 function ttsPageEls(){const v=$('#view');return [...v.querySelectorAll('h1,h2,h3,h4,p,li,dd,blockquote,.faqt,.lead')].filter(e=>!e.closest('nav,.crumb,aside,.side,.tdd,.faqbar,.flt,.bkact,.lsn,button,select,.vi-o,.tabs')&&!e.querySelector('p,li')&&e.offsetParent!==null&&(e.innerText||'').trim().length>1)}
 document.addEventListener('click',e=>{const t=e.target.closest('[data-tts]');if(t){const a=t.dataset.tts;
+    if(a==='min'){TTS.min=!TTS.min;const b=$('#ttsb');b.classList.toggle('min',TTS.min);t.textContent=TTS.min?'⤢':'–';if(b.classList.contains('free'))ttsClamp(b);ttsRelayout();return}
     if(a==='stop')ttsStop();else if(a==='next'){speechSynthesis.cancel();TTS.paused=false;TTS.i++;while(TTS.i<TTS.q.length&&TTS.q[TTS.i].el===TTS.cur)TTS.i++;ttsNext()}
     else if(a==='pause'){if(TTS.paused){TTS.paused=false;speechSynthesis.cancel();ttsNext();t.textContent='⏸'}else{TTS.paused=true;speechSynthesis.cancel();t.textContent='▶'}}
     else if(a==='page')TTS.on?ttsStop():ttsStart(ttsPageEls(),'page');return}});
